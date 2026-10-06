@@ -1,0 +1,10 @@
+.env
+.env.local
+.env.*.local
+node_modules
+.next
+.data
+.test-data
+playwright-report
+test-results
+tsconfig.tsbuildinfo

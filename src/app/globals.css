@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+  }
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-gray-100 p-5;
+  }
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-500 text-white font-semibold text-sm hover:bg-blue-600 active:scale-95 transition-all;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl text-gray-600 font-semibold text-sm hover:bg-gray-100 active:scale-95 transition-all;
+  }
+}
+
+/* Warning overlay flash animation */
+@keyframes warning-flash {
+  0%, 100% { background-color: #dc2626; }
+  40%       { background-color: #991b1b; }
+  70%       { background-color: #ef4444; }
+}
+@keyframes warning-shake {
+  0%, 100% { transform: translateX(0); }
+  15%       { transform: translateX(-6px) rotate(-1deg); }
+  30%       { transform: translateX(6px) rotate(1deg); }
+  45%       { transform: translateX(-4px); }
+  60%       { transform: translateX(4px); }
+  75%       { transform: translateX(-2px); }
+}
+@keyframes corner-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5); }
+  50%       { box-shadow: 0 0 0 8px rgba(220, 38, 38, 0); }
+}
+.animate-warning-flash { animation: warning-flash 1.2s ease-in-out infinite; }
+.animate-warning-shake { animation: warning-shake 0.5s ease-in-out; }
+.animate-corner-pulse  { animation: corner-pulse 2s ease-in-out infinite; }
+
+/* Themed page backdrops (Home/Work/Grades) — frost the cards so the scene shows through */
+.page-theme .card {
+  background-color: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(6px);
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+.animate-bob { animation: bob 4s ease-in-out infinite; }
+
+.bubble {
+  position: absolute;
+  bottom: -10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  animation: bubble-rise 6s linear infinite;
+}
+@keyframes bubble-rise {
+  0%   { transform: translateY(0) translateX(0); opacity: 0.6; }
+  100% { transform: translateY(-90vh) translateX(10px); opacity: 0; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.animate-spin-slow { animation: spin-slow 18s linear infinite; }
+
+.sparkle {
+  position: absolute;
+  font-size: 14px;
+  opacity: 0;
+  animation: twinkle 3s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  50%      { opacity: 1; transform: scale(1); }
+}
+
+/* Grade pill colors */
+.grade-a { @apply bg-green-100 text-green-700; }
+.grade-b { @apply bg-blue-100 text-blue-700; }
+.grade-c { @apply bg-yellow-100 text-yellow-700; }
+.grade-d { @apply bg-orange-100 text-orange-700; }
+.grade-f { @apply bg-red-100 text-red-700; }
+.grade-none { @apply bg-gray-100 text-gray-500; }
